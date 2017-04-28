@@ -119,15 +119,15 @@ def DFSBinaryOrdered(root, fcn, ltFcn):
 
 
 
-
+if __name__=='__main__':
 # test examples
 
-print 'DFS'
-DFSBinary(n5, find6)
+    print 'DFS'
+    print DFSBinary(n5, find6)
 
-print ''
-print 'BFS'
-BFSBinary(n5, find6)
+    print ''
+    print 'BFS'
+    print BFSBinary(n5, find6)
 
 
 ## if we wanted to return the path that got to the goal, would need to modify
@@ -152,9 +152,9 @@ def TracePath(node):
     else:
         return [node] + TracePath(node.getParent())
 
-
-print''
-print 'DFS path'
-pathTo6 = DFSBinaryPath(n5, find6)
-print [e.getValue() for e in pathTo6]
+if __name__=='__main__':
+    print''
+    print 'DFS path'
+    pathTo6 = DFSBinaryPath(n5, find6)
+    print [e.getValue() for e in pathTo6]
 
