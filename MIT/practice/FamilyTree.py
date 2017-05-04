@@ -133,22 +133,20 @@ class Family(object):
         ## YOUR CODE HERE ####
         cousin_type = None
         remove = None
+        def degree_a(mom0):
+            mom_L = [mom0]
+            if mom0 == None:
+                return mom_L
+            return mom_L+degree_a(mom0.get_parent())
+        def degree_b(mom1):
+            mom_L = [mom1]
+            if mom1 == None:
+                return mom_L
+            return mom_L+degree_b(mom1.get_parent())
         some_node0 = self.names_to_nodes[a]
         some_node1 = self.names_to_nodes[b]
         mom_node0 = some_node0.get_parent()
         mom_node1 = some_node1.get_parent()
-        def degree_a(mom0):
-            if mom0 == None:
-                cousin_type = -1
-                return cousin_type
-            else:
-                return 1 + degree_a(mom0.get_parent())
-        def degree_b(mom1):
-            if mom1 == None:
-                cousin_type = -1
-                return cousin_type
-            else:
-                return 1 + degree_b(mom1.get_parent())
         if some_node0.is_parent(some_node1):
             cousin_type,remove = -1,1
             return (cousin_type,remove)
@@ -159,14 +157,20 @@ class Family(object):
             cousin_type,remove = -1,0
             return (cousin_type,remove)
         elif mom_node0 == mom_node1:
-                cousin_type,remove = 0,0
-                return (cousin_type,remove)
+            return (0,0)
         else:
             cousin_type0 = degree_a(mom_node0)
             cousin_type1 = degree_b(mom_node1)
-            if cousin_type0 > cousin_type1:
-                return (cousin_type1,cousin_type0-cousin_type1)
-            return (cousin_type0,cousin_type1-cousin_type0)
+            for mom in cousin_type0:
+                if mom in cousin_type1:
+                    count0 = cousin_type0.index(mom)
+                    count1 = cousin_type1.index(mom)
+                    remove = abs(count0 - count1)
+                    if mom == cousin_type1[-1]:
+                        return (-1,remove)
+                    elif count0 > count1:
+                        return (count1,remove)
+                    return (count0 ,remove)
         raise NotImplementedError()
 
 
@@ -183,7 +187,7 @@ f.set_children("g", ["n", "o", "p", "q"])
 words = ["zeroth", "first", "second", "third", "fourth", "fifth", "non"]
 
 ## These are your test cases.
-'''
+
 ## The first test case should print out:
 ## 'b' is a zeroth cousin 0 removed from 'c'
 t, r = f.cousin("b", "c")
@@ -212,9 +216,10 @@ print "'h' is a", words[t], "cousin", r, "removed from 'h'"
 
 t, r = f.cousin("a", "a")
 print "'a' is a", words[t], "cousin", r, "removed from 'a'"
-'''
 
 
+t, r = f.cousin("h", "c")
+print "'h' is a", words[t], "cousin", r, "removed from 'c'"
 
 t, r = f.cousin("f", "n")
 print "'f' is a", words[t], "cousin", r, "removed from 'n'"
@@ -241,18 +246,6 @@ BUT Your Result: t, r = f.cousin("f", "n")
 Test completed
 
 ------+------+------+------+------
-Test: Relationship Test Randomized 3
-True
- Correct Result: t, r = f.cousin("p", "d")
-'p' is a first cousin 1 removed from 'd'
-
-Test completed
-And Your Result: t, r = f.cousin("p", "d")
-'p' is a first cousin 1 removed from 'd'
-
-Test completed
-
-------+------+------+------+------
 Test: Relationship Test Randomized 4
 False
  Correct Result: t, r = f.cousin("d", "i")
@@ -261,18 +254,6 @@ False
 Test completed
 BUT Your Result: t, r = f.cousin("d", "i")
 'd' is a non cousin 0 removed from 'i'
-
-Test completed
-
-------+------+------+------+------
-Test: Relationship Test Randomized 5
-True
- Correct Result: t, r = f.cousin("j", "l")
-'j' is a second cousin 0 removed from 'l'
-
-Test completed
-And Your Result: t, r = f.cousin("j", "l")
-'j' is a second cousin 0 removed from 'l'
 
 Test completed
 
@@ -289,16 +270,6 @@ BUT Your Result: t, r = f.cousin("q", "m")
 Test completed
 
 ------+------+------+------+------
-Test: Relationship Test Randomized 7
-True
- Correct Result: t, r = f.cousin("n", "i")
-'n' is a second cousin 0 removed from 'i'
-
-Test completed
-And Your Result: t, r = f.cousin("n", "i")
-'n' is a second cousin 0 removed from 'i'
-
-Test completed
 
 ------+------+------+------+------
 Test: Relationship Test Randomized 8
