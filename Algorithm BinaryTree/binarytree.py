@@ -129,7 +129,7 @@ if __name__=='__main__':
     print 'BFS'
     print BFSBinary(n5, find6)
 
-
+    print DFSBinaryOrdered(n6,find6,lt6)
 ## if we wanted to return the path that got to the goal, would need to modify
 # We can track the search path if we use these two function
 def DFSBinaryPath(root, fcn):
