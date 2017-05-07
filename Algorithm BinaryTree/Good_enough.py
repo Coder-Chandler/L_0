@@ -1,3 +1,4 @@
+
 from Decision_Tree_BackPack import sumValues, WeightsBelow10,treeTest
 def DFSDTreeGoodEnough(root, valueFcn, constraintFcn, stopFcn):
     stack = [root]
@@ -53,7 +54,7 @@ def BFSDTreeGoodEnough(root, valueFcn, constraintFcn, stopFcn):
     return best
 
 def atLeast15(lst):#this is the small function which play the key role.
-    return sumValues(lst) >= 15
+    return sumValues(lst) >= 15#The function DFSDTreeGoodEnough or BFSDTreeGoodEnough will stop when the sum >= 15
 
 if __name__=='__main__':
     print ''
