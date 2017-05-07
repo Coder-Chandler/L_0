@@ -37,3 +37,28 @@ def isPalindromes(s):
 
 print isPalindromes('abababa')
 print isPalindromes('asfdshi')
+
+###################################################
+# About Debugging
+def isPal(x):
+    assert isinstance(x,list),\
+    'Your variable is not a list!'
+    temp = x[:]
+    temp.reverse()
+    if temp == x:
+        return True
+    else:
+        return False
+def silly(n):
+    assert isinstance(n,int) and n >= 0,\
+    'Your variable is not positive intergers!'
+    result = []
+    for i in range(n):
+        elem = raw_input('Enter your element:')
+        result.append(elem)
+    if isPal(result):
+        print "Yes! it's a Palindromes!"
+    else:
+        print "No! it's not a Palindromes!"
+
+silly(2)
