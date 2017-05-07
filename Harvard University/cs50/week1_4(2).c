@@ -64,7 +64,7 @@ main(void)
     {
         for (int i = 0; i <= 100;i++)
         {
-            printf("\rPercent complete: %d%%\r",i);
+            printf("\rPercent complete: %3d%%\r",i);
             fflush(stdout);
             sleep(1);
         }
