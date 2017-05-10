@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int 
+Course()
+{
+    printf ("%s\n","he learn to code on imooc");
+    return 0;
+}
+
+int 
+course(int n)
+{
+    printf ("he learned %d courses", n);
+    return 0;
+}
+
+int main()
+{
+    Course();
+    course(5);
+    return 0;
+}
