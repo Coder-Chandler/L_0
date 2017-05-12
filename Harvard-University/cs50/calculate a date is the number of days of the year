@@ -1,0 +1,34 @@
+#include <stdio.h>
+int main() 
+{ 
+    //Calculate a date is the number of days of the year
+    int year = 2008;
+    int month = 8;
+    int day = 8;
+	//define a date to plus the days of every month
+    int date = 0;
+    switch (month)
+    {
+        case 12:    date += 30;
+        case 11:    date += 31;
+        case 10:    date += 30;
+        case 9:     date += 31;
+        case 8:     date += 31;
+        case 7:     date += 30;
+        case 6:     date += 31;
+        case 5:     date += 30;
+        case 4:     date += 31;
+        case 3:     if (year % 10 == 0 && year % 400 == 0 ||         year % 4 == 0 && year % 10 != 0)
+                    {
+                        date += 29;
+                    }
+                    else
+                    {
+                        date += 28;
+                    }
+        case 2:     date += 31;
+        default:     date += 8,printf("8.8 is the %dth day of 2008 ",date);break;
+    }
+
+	return 0;
+}
