@@ -1,0 +1,8 @@
+[userinfo]
+name = chandler
+pwd = 12345
+
+[study]
+python_base = 15
+python_junior = 20
+linux_base = 15
