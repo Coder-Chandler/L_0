@@ -94,7 +94,7 @@ if __name__=='__main__':
     foobar = DFSDTree(treeTest, sumValues, WeightsBelow10)
     print foobar.getValue()
 
-    #print ''
+    #print ""
     #print 'BFS decision tree'
     #foobarnew = BFSDTree(treeTest, sumValues, WeightsBelow10)
     #print foobarnew.getValue()
