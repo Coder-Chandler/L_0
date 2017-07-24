@@ -9,7 +9,7 @@ def bubble(L):
     return L
 
 def cocktail(L):
-    assert type(L)==list,'An Error about the type of Arguments!Check Check Check!!~(from Frank Underwood in House of Cards)'
+    assert type(L)==list,'An Error about the type of Arguments!'
     count=0
     flag=True
     while flag:
